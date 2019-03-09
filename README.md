@@ -1,5 +1,2 @@
 # PiE2019
-Pioneers in Engineering Hayward High 2019: Code for Robot.
-//YEET
-//YEET
-//YEET
+Pioneers in Engineering: Hayward High Robotics 2019
