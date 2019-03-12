@@ -1,35 +1,32 @@
-left_motor = "YOUR MOTOR ID HERE"
-right_motor = "YOUR MOTOR ID HERE"
+left_motor = "56692776393860847950432"
+right_motor = "56701913640562953935644"
 
 def autonomous_setup():
     print("Autonomous mode has started!")
-    Robot.run(autonomous_actions)
-    Robot.run(pick_up_candy, 5, "Hippity hoppity")
-    Robot.run(autonomous_actions)
-    
+    Robot.run(go_forward, 7)
 
-async def pick_up_candy(number_of_candies, message):
-    blah(number_of_candies) 
-    print(message)
-    
 def autonomous_main():
     pass
 
-async def autonomous_actions():
-    print("Autonomous action sequence started")
-    await Actions.sleep(1.0)
-    print("1 second has passed in autonomous mode")
-
+async def go_forward(time):
+    # move left motor forward 
+    Robot.set_value(left_motor, 'duty_cycle', .5)
+    # move right motor forward
+    Robot.set_value(right_motor,'duty_cycle', .5)
+    # wait for x (time) number of seconds
+    await Actions.sleep(time)
+    # tell left motor to stop
+    Robot.set_value(left_motor,'duty_cycle', 0)
+    # tell right motor to stop 
+    Robot.set_value(right_motor,'duty_cycle', 0)
 def teleop_setup():
     print("Tele-operated mode has started!")
 
-
 def teleop_main():
     if Gamepad.get_value("joystick_right_y") > 0.5:
+        print("Moving joystick")
         Robot.set_value(left_motor, "duty_cycle", -0.5)
         Robot.set_value(right_motor, "duty_cycle", -0.5)
-    elif Gamepad.get_value("joystick_right_y") < 0.5:
-        
     else:
         Robot.set_value(left_motor, "duty_cycle", 0)
         Robot.set_value(right_motor, "duty_cycle", 0)
