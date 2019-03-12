@@ -19,14 +19,22 @@ async def go_forward(time):
     Robot.set_value(left_motor,'duty_cycle', 0)
     # tell right motor to stop 
     Robot.set_value(right_motor,'duty_cycle', 0)
+
 def teleop_setup():
     print("Tele-operated mode has started!")
+    # Experimentation with Controller Function. Revert if not functional.
+    async def controller_function():
+        if Gamepad.get_value("joystick_left_y") != 0.0:
+            print("Moving joystick")
+            Robot.set_value(left_motor, "duty_cycle", Gamepad.get_value("joystick_left_y"))
+        else:
+            Robot.set_value(left_motor, "duty_cycle", 0)
+            
+        if Gamepad.get_value("joystick_right_y") != 0.0:
+            print("Moving joystick")
+            Robot.set_value(right_motor, "duty_cycle", Gamepad.get_value("joystick_right_y"))
+        else:
+            Robot.set_value(right_motor, "duty_cycle", 0)
 
 def teleop_main():
-    if Gamepad.get_value("joystick_right_y") > 0.5:
-        print("Moving joystick")
-        Robot.set_value(left_motor, "duty_cycle", -0.5)
-        Robot.set_value(right_motor, "duty_cycle", -0.5)
-    else:
-        Robot.set_value(left_motor, "duty_cycle", 0)
-        Robot.set_value(right_motor, "duty_cycle", 0)
+    Robot.run(controller_funtion)
