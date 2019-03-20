@@ -97,8 +97,6 @@ def teleop_setup():
     print("Tele-operated mode has started")
     
     # Idk what goes here yet
-
-async def controller_function():
     
     if Gamepad.get_value("button_a") > 0.5:
         
