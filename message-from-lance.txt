@@ -1,0 +1,21 @@
+Howdy!
+
+Our goal is to have all of our code broken down into algorithm (step-by-step instructions) by the end of Thursday. 
+
+The shield bot should have functions for:
+- Drive forward
+- Drive reverse
+- Turn
+- Open shield
+- Close shield
+
+The the forklift bot should have functions for controlling the lift. (Don't worry about the drivetrain controls -- I'll handle that.)
+
+Don't worry about writing code. Write your pseudocode in Python comments.
+
+When you're done for the day, commit your code to the Github repository. Leave a good description and commit to the MASTER branch.
+
+Get what you can done.
+
+Noodles,
+Lance
