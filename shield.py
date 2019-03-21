@@ -87,14 +87,14 @@ async def open_shield(time):
     
     # 1) Shield servo align to open __*
     
-    Robot.set_value(shield_servo, "", 1)
+    Robot.set_value(shield_servo, "duty_cycle", 1)
     
 async def close_shield(time):
     # close shield function
     
     # 1a) Shield servo align to close _*
     
-    Robot.set_value(shield_servo, "", 0)
+    Robot.set_value(shield_servo, "duty_cycle", 0)
     
 def teleop_setup():
 
