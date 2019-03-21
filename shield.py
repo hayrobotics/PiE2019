@@ -1,5 +1,4 @@
 left_motor = "56692776393860847950432"
-
 right_motor = "56701913640562953935644"
 
 shield_servo_ = ''
@@ -15,7 +14,27 @@ def autonomous_setup():
 def autonomous_main():
 
     pass
-
+async def go_backward(time):
+    
+    #move left motor backward
+    
+    Robot.set_value(left_motor, 'duty_cycle', -.5)
+    
+    #move right motor backward
+    
+    Robot.set_value(right_motor, 'duty_cycle', -.5)
+    
+    #wait for x (time) number of seconds
+    
+    await Actions.sleep(time)
+    
+    #tell left motor to stop
+    
+    Robot.set_value(left_motor, 'duty_cycle', 0)
+    
+    #tell right motor to stop
+    
+    Robot.set_value(right_motor, 'duty_cycle', 0)
 
 
 async def go_forward(time):
