@@ -59,6 +59,28 @@ async def go_forward(time):
 
     Robot.set_value(right_motor,'duty_cycle', 0)
 
+async def turn_angle(angle):
+    time= angle / 2
+    
+    #move left motor forward
+    
+    Robot.set_value(left_motor, 'duty_cycle', .5)
+    
+    #move right motor reverse
+    
+    Robot.set_value(right_motor, 'duty_cycle', -.5)
+    
+    #wait for x (time) number of seconds
+    
+    await Actions.sleep(time)
+    
+    #tell left motor to stop
+    
+    Robot.set_value(left_motor, 'duty_cycle', 0)
+    
+    #tell right motor to stop
+    
+    Robot.set_value(right_motor, 'duty_cycle', 0)
 
 async def open_shield(time):
     # open shield fuction
@@ -72,6 +94,7 @@ async def close_shield(time):
     
     # 1a) Shield servo align to close _*
     
+    Robot.set_value(shield_servo, "", 0)
     
 def teleop_setup():
 
