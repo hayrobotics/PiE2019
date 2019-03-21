@@ -92,7 +92,7 @@ def teleop_main():
 
     Robot.run(controller_funtion)
     
-def teleop_setup():
+def teleop_main():
     
     print("Tele-operated mode has started")
     
