@@ -46,6 +46,30 @@ async def go_backward(time):
     #tell right motor to stop
     
     Robot.set_value(right_motor, 'duty_cycle', 0)
+    #---TURN ANGLE---
+
+async def turn_angle(angle):
+    time= angle / 2
+    
+    #move left motor forward
+    
+    Robot.set_value(left_motor, 'duty_cycle', .5)
+    
+    #move right motor reverse
+    
+    Robot.set_value(right_motor, 'duty_cycle', -.5)
+    
+    #wait for x (time) number of seconds
+    
+    await Actions.sleep(time)
+    
+    #tell left motor to stop
+    
+    Robot.set_value(left_motor, 'duty_cycle', 0)
+    
+    #tell right motor to stop
+    
+    Robot.set_value(right_motor, 'duty_cycle', 0)
 
 def autonomous_setup():
     pass
