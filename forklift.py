@@ -1,7 +1,10 @@
 # Forklift code!
-left_motor = ""
-right_motor = ""
-lift_motor = ""
+left_motor = "56702378516105538047867"
+right_motor = "56702629055943970764316"
+lift_motor = "56695734118150397621956"
+
+rmc = -0.5
+lmc = 0.5
 
 async def go_forward(time):
 
@@ -71,8 +74,17 @@ async def turn_angle(angle):
     
     Robot.set_value(right_motor, 'duty_cycle', 0)
 
+async def robot_drive_direct(vleft, vright):
+    Robot.set_value(left_motor, 'duty_cycle', lmc * vleft)    
+    Robot.set_value(right_motor, 'duty_cycle', rmc * vright)
+
+async def activate_lift(vlift, time):
+    Robot.set_value(lift_motor, 'duty_cycle', -vlift)
+    await Actions.sleep(time)
+    Robot.set_value(lift_motor, 'duty_cycle', 0)
+
 def autonomous_setup():
-    pass
+    Robot.run(activate_lift, -0.4, 4.0)
 
 def autonomous_main():
     pass
