@@ -30,13 +30,13 @@ async def go_forward(time):
 
     # move right motor forward
 
-    Robot.set_value(right_motor,'duty_cycle', rmc)
+    Robot.set_value(right_motor,'duty_cycle', -rmc)
 
     # wait for x (time) number of seconds
 
     await Actions.sleep(time)
 
-    # tell left motor to stop
+    # tell left motor to stop-
 
     Robot.set_value(left_motor,'duty_cycle', 0)
 
