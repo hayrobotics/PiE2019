@@ -38,7 +38,28 @@ def next_fib(num):
             first = second
             second = third
             third = first + second
+
         return third
+
+def gets_coins(num):
+    total = 0
+    quarters = 0
+    nickels = 0
+    pennies = 0
+    while total < num:
+        if not total + 25 > num:
+            total += 25
+            quarters += 1
+        else:
+            if not total + 5 > num:
+                total += 5
+                nickels += 1
+            else:
+                if not total + 1 > num:
+                    total += 1
+                    pennies += 1
+
+    return int(str(quarters) + str(nickels) + str(pennies))
 
 # Still in Progress
 
