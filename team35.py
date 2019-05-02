@@ -1,15 +1,15 @@
 # Hayward high one Team 35
-left_motor = "56694330375578801448964"
+left_motor = "56697961399783052488428"
 right_motor = "56692776393860847950432"
 
 # Motor constants - all velocity values multiplied by these numbers.
 # Changing these variables changes speed everywhere in the code. 
 
-lmc = 1 # Left motor constant
+lmc = -1 # Left motor constant
 
-rmc = -1 # Right motor constant
+rmc = -0.4 # Right motor constant
 
-cmc = 1 # Center motor constant
+# cmc = 1 # Center motor constant
 
 async def motor_test():
     Robot.set_value(left_motor, 'duty_cycle', -1.0)
@@ -138,15 +138,7 @@ def teleop_setup():
 def teleop_main():
     print("Loop:")
     
-    #print("Moving left motor at %s" %Gamepad.get_value("joystick_left_y"))
-    if Gamepad.get_value("joystick_left_y") != 0.0:
-        Robot.set_value(left_motor, "duty_cycle", Gamepad.get_value("joystick_left_y"))
-    else:
-        Robot.set_value(left_motor, "duty_cycle", 0)
-    
-    if Gamepad.get_value("joystick_right_y") != 0.0:
-        Robot.set_value(right_motor, "duty_cycle", Gamepad.get_value("joystick_left_y"))
-    else:
-        Robot.set_value(right_motor, "duty_cycle", 0)
-    #print("Moving right motor at %s" %Gamepad.get_value("joystick_right_y"))
-    Robot.set_value(right_motor, "duty_cycle", Gamepad.get_value("joystick_right_y"))
+    Robot.set_value(left_motor, "duty_cycle", lmc* Gamepad.get_value("joystick_left_y"))
+    print("Left wheel: %s" %Gamepad.get_value("joystick_left_y"))
+    Robot.set_value(right_motor, "duty_cycle", rmc* Gamepad.get_value("joystick_right_y"))
+    print("Right wheel: %s" %Gamepad.get_value("joystick_right_y"))
