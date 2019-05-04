@@ -64,26 +64,17 @@ def gets_coins(num):
 # Still in Progress
 
 def most_common(num):
-    i, final, newlist = 0, "", []
-    num = str(num)
-    numlist = list(num)
-    count = {}
-    for x in numlist:
-        if x in count:
-            count[x] += 1
-        else:
-            count[x] = 1
-    while i < 4:
-        newlist.append(max(count))
-        count.pop(max(count))
-        i = i + 1
-    i = 0
-    newlist = list(map(int, newlist))
-    while i < 4:
-        final = final + str(max(newlist))
-        newlist.remove(max(newlist))
-        i = i + 1
-    final = int(final)
-    print(final)
+  frequency = {}
+  for digit in list(str(num)):
+    if digit in frequency.keys():
+      frequency[digit] += 1
+    else:
+      frequency[digit] = 1
+  
+  # We almost wrote this: return int(list(frequency.keys())[list(frequency.values()).index(max(list(frequency.values())))]
+  keys = list(frequency.keys())
+  values = list(frequency.values())
+  
+  most_common = keys[(values.index(max(values)))]
 
-most_common(12345) 
+  return int(most_common)
